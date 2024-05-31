@@ -6,7 +6,7 @@ import styles from './ArrowButton.module.scss';
 export type OnClick = () => void;
 export type ArrowButtonProps = {
 	isOpen: boolean;
-	toggleIsOpen: () => void;
+	onClick: () => void;
 };
 
 export const ArrowButton = (props: ArrowButtonProps) => {
@@ -26,7 +26,7 @@ export const ArrowButton = (props: ArrowButtonProps) => {
 				className={
 					!props.isOpen ? styles.arrow : `${styles.arrow} ${styles.arrow_open}`
 				}
-				onClick={props.toggleIsOpen}
+				onClick={props.onClick}
 			/>
 		</div>
 	);

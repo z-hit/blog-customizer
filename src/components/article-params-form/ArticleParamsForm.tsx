@@ -1,31 +1,43 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
+import { Separator } from 'components/separator';
+import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClose';
 
 import styles from './ArticleParamsForm.module.scss';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export const ArticleParamsForm = () => {
-	const [open, setOpen] = useState(false);
+	const [isFormOpen, setOpen] = useState(false);
+	//const [formState, setFormState] = useState({});
+	const formRef = useRef<HTMLDivElement | null>(null);
+
 	function toggleOpen() {
-		setOpen(!open);
+		setOpen(!isFormOpen);
 	}
 
+	useOutsideClickClose({
+		isOpen: isFormOpen,
+		rootRef: formRef,
+		onChange: setOpen,
+	});
+
 	return (
-		<>
-			<ArrowButton isOpen={open} toggleIsOpen={toggleOpen} />
+		<div ref={formRef}>
+			<ArrowButton isOpen={isFormOpen} onClick={toggleOpen} />
 			<aside
 				className={
-					!open
+					!isFormOpen
 						? styles.container
 						: `${styles.container} ${styles.container_open}`
 				}>
 				<form className={styles.form}>
+					<Separator />
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
 						<Button title='Применить' type='submit' />
 					</div>
 				</form>
 			</aside>
-		</>
+		</div>
 	);
 };
