@@ -1,10 +1,12 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Separator } from 'components/separator';
+import { Select } from 'components/select';
 import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClose';
 
 import styles from './ArticleParamsForm.module.scss';
 import { useRef, useState } from 'react';
+import { fontFamilyOptions } from 'src/constants/articleProps';
 
 export const ArticleParamsForm = () => {
 	const [isFormOpen, setOpen] = useState(false);
@@ -31,6 +33,12 @@ export const ArticleParamsForm = () => {
 						: `${styles.container} ${styles.container_open}`
 				}>
 				<form className={styles.form}>
+					<Select
+						options={fontFamilyOptions}
+						placeholder={fontFamilyOptions[0].title}
+						title='шрифт'
+						selected={null}
+					/>
 					<Separator />
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
