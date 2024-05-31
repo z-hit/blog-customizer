@@ -6,8 +6,9 @@ import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClo
 import { Text } from 'components/text';
 
 import styles from './ArticleParamsForm.module.scss';
-import { useRef, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import {
+	OptionType,
 	backgroundColors,
 	contentWidthArr,
 	fontColors,
@@ -18,11 +19,29 @@ import { RadioGroup } from '../radio-group';
 
 export const ArticleParamsForm = () => {
 	const [isFormOpen, setOpen] = useState(false);
-	//const [formState, setFormState] = useState({});
+	//const [formState, setFormState] = useState(defaultArticleState);
 	const formRef = useRef<HTMLDivElement | null>(null);
 
 	function toggleOpen() {
 		setOpen(!isFormOpen);
+	}
+
+	/* function handleChange(value: OptionType) {
+		setFormState((prev) => ({
+			...prev,
+			[key]: value;
+		}))
+	} */
+
+	function handleSubmit(evt: FormEvent) {
+		evt.preventDefault();
+		console.log('submit works');
+	}
+
+	function handleReset(evt: FormEvent) {
+		evt.preventDefault();
+		//setFormState(defaultArticleState);
+		console.log('reset works');
 	}
 
 	useOutsideClickClose({
@@ -40,7 +59,10 @@ export const ArticleParamsForm = () => {
 						? styles.container
 						: `${styles.container} ${styles.container_open}`
 				}>
-				<form className={styles.form}>
+				<form
+					onReset={handleReset}
+					onSubmit={handleSubmit}
+					className={styles.form}>
 					<Text size={31} weight={800} uppercase>
 						{'Задайте параметры'}
 					</Text>
