@@ -3,10 +3,18 @@ import { Button } from 'components/button';
 import { Separator } from 'components/separator';
 import { Select } from 'components/select';
 import { useOutsideClickClose } from 'components/select/hooks/useOutsideClickClose';
+import { Text } from 'components/text';
 
 import styles from './ArticleParamsForm.module.scss';
 import { useRef, useState } from 'react';
-import { fontFamilyOptions } from 'src/constants/articleProps';
+import {
+	backgroundColors,
+	contentWidthArr,
+	fontColors,
+	fontFamilyOptions,
+	fontSizeOptions,
+} from 'src/constants/articleProps';
+import { RadioGroup } from '../radio-group';
 
 export const ArticleParamsForm = () => {
 	const [isFormOpen, setOpen] = useState(false);
@@ -33,13 +41,40 @@ export const ArticleParamsForm = () => {
 						: `${styles.container} ${styles.container_open}`
 				}>
 				<form className={styles.form}>
+					<Text size={31} weight={800} uppercase>
+						{'Задайте параметры'}
+					</Text>
 					<Select
 						options={fontFamilyOptions}
 						placeholder={fontFamilyOptions[0].title}
 						title='шрифт'
 						selected={null}
 					/>
+					<RadioGroup
+						name='размер шрифта'
+						options={fontSizeOptions}
+						selected={fontSizeOptions[0]}
+						title='размер шрифта'
+					/>
+					<Select
+						options={fontColors}
+						placeholder={fontColors[0].title}
+						title='цвет шрифта'
+						selected={null}
+					/>
 					<Separator />
+					<Select
+						options={backgroundColors}
+						placeholder={backgroundColors[0].title}
+						title='цвет фона'
+						selected={null}
+					/>
+					<Select
+						options={contentWidthArr}
+						placeholder={contentWidthArr[0].title}
+						title='ширина контента'
+						selected={null}
+					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
 						<Button title='Применить' type='submit' />
