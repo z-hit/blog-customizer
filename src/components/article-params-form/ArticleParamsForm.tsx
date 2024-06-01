@@ -39,15 +39,12 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	function handleSubmit(evt: FormEvent) {
 		evt.preventDefault();
 		props.onChange(formState);
-		console.log('submit works');
-		console.log(formState);
 	}
 
 	function handleReset(evt: FormEvent) {
 		evt.preventDefault();
 		props.onChange(defaultArticleState);
-		console.log('reset works');
-		console.log(formState);
+		setFormState(defaultArticleState);
 	}
 
 	useOutsideClickClose({
@@ -77,7 +74,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Select
 						type='fontFamilyOption'
 						options={fontFamilyOptions}
-						placeholder={formState.fontFamilyOption}
+						placeholder={formState.fontFamilyOption.title}
 						title='шрифт'
 						selected={formState.fontFamilyOption}
 						onChange={(type, selected) => handleChange(type, selected)}
@@ -93,7 +90,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Select
 						type='fontColor'
 						options={fontColors}
-						placeholder={formState.fontColor}
+						placeholder={formState.fontColor.title}
 						title='цвет шрифта'
 						selected={formState.fontColor}
 						onChange={(type, selected) => handleChange(type, selected)}
@@ -102,7 +99,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Select
 						type='backgroundColor'
 						options={backgroundColors}
-						placeholder={formState.backgroundColor}
+						placeholder={formState.backgroundColor.title}
 						title='цвет фона'
 						selected={formState.backgroundColor}
 						onChange={(type, selected) => handleChange(type, selected)}
@@ -110,7 +107,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Select
 						type='contentWidth'
 						options={contentWidthArr}
-						placeholder={formState.contentWidth}
+						placeholder={formState.contentWidth.title}
 						title='ширина контента'
 						selected={formState.contentWidth}
 						onChange={(type, selected) => handleChange(type, selected)}
