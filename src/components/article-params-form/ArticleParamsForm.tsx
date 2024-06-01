@@ -19,7 +19,11 @@ import {
 } from 'src/constants/articleProps';
 import { RadioGroup } from '../radio-group';
 
-export const ArticleParamsForm = () => {
+export type ArticleParamsFormProps = {
+	onChange: (params: ArticleStateType) => void;
+};
+
+export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [isFormOpen, setFormOpen] = useState(false);
 	const [formState, setFormState] = useState(defaultArticleState);
 	const formRef = useRef<HTMLDivElement | null>(null);
@@ -33,13 +37,14 @@ export const ArticleParamsForm = () => {
 
 	function handleSubmit(evt: FormEvent) {
 		evt.preventDefault();
+		props.onChange(formState);
 		console.log('submit works');
 		console.log(formState);
 	}
 
 	function handleReset(evt: FormEvent) {
 		evt.preventDefault();
-		setFormState(defaultArticleState);
+		props.onChange(defaultArticleState);
 		console.log('reset works');
 		console.log(formState);
 	}
