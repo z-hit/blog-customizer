@@ -18,6 +18,7 @@ import {
 	fontSizeOptions,
 } from 'src/constants/articleProps';
 import { RadioGroup } from '../radio-group';
+import clsx from 'clsx';
 
 export type ArticleParamsFormProps = {
 	onChange: (params: ArticleStateType) => void;
@@ -62,11 +63,10 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 				onClick={() => setFormOpen(!isFormOpen)}
 			/>
 			<aside
-				className={
-					!isFormOpen
-						? styles.container
-						: `${styles.container} ${styles.container_open}`
-				}>
+				className={clsx({
+					[styles.container]: true,
+					[styles.container_open]: isFormOpen,
+				})}>
 				<form
 					onReset={handleReset}
 					onSubmit={handleSubmit}

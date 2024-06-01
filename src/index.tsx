@@ -32,9 +32,7 @@ const App = () => {
 					'--bg-color': params.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm
-				onChange={(newParams: ArticleStateType) => handleChange(newParams)}
-			/>
+			<ArticleParamsForm onChange={handleChange} />
 			<Article />
 		</div>
 	);
