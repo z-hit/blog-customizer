@@ -24,18 +24,18 @@ export const ArticleParamsForm = () => {
 	const [formState, setFormState] = useState(defaultArticleState);
 	const formRef = useRef<HTMLDivElement | null>(null);
 
-	/* function handleChange(value: OptionType) {
+	function handleChange(type: keyof ArticleStateType, value: OptionType) {
 		setFormState((prev) => ({
 			...prev,
-			[key]: value;
-		}))
-	} */
+			[type]: value,
+		}));
+	}
 
-	/* function handleSubmit(evt: FormEvent) {
+	function handleSubmit(evt: FormEvent) {
 		evt.preventDefault();
 		console.log('submit works');
 		console.log(formState);
-	} */
+	}
 
 	function handleReset(evt: FormEvent) {
 		evt.preventDefault();
@@ -64,41 +64,49 @@ export const ArticleParamsForm = () => {
 				}>
 				<form
 					onReset={handleReset}
-					//onSubmit={handleSubmit}
+					onSubmit={handleSubmit}
 					className={styles.form}>
 					<Text size={31} weight={800} uppercase>
 						{'Задайте параметры'}
 					</Text>
 					<Select
+						type='fontFamilyOption'
 						options={fontFamilyOptions}
 						placeholder={fontFamilyOptions[0].title}
 						title='шрифт'
 						selected={null}
+						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<RadioGroup
-						name='размер шрифта'
+						name='fontSize'
 						options={fontSizeOptions}
 						selected={fontSizeOptions[0]}
 						title='размер шрифта'
 					/>
 					<Select
+						type='fontColor'
 						options={fontColors}
 						placeholder={fontColors[0].title}
 						title='цвет шрифта'
 						selected={null}
+						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Separator />
 					<Select
+						type='backgroundColor'
 						options={backgroundColors}
 						placeholder={backgroundColors[0].title}
 						title='цвет фона'
 						selected={null}
+						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Select
+						type='contentWidth'
 						options={contentWidthArr}
 						placeholder={contentWidthArr[0].title}
 						title='ширина контента'
 						selected={null}
+						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import type { MouseEventHandler } from 'react';
 import clsx from 'clsx';
-import { OptionType } from 'src/constants/articleProps';
+import { ArticleStateType, OptionType } from 'src/constants/articleProps';
 import { Text } from 'components/text';
 import arrowDown from 'src/images/arrow-down.svg';
 import { Option } from './Option';
@@ -13,15 +13,17 @@ import styles from './Select.module.scss';
 
 type SelectProps = {
 	selected: OptionType | null;
+	type: keyof ArticleStateType;
 	options: OptionType[];
 	placeholder?: string;
-	onChange?: (selected: OptionType) => void;
+	onChange?: (type: keyof ArticleStateType, selected: OptionType) => void;
 	onClose?: () => void;
 	title?: string;
 };
 
 export const Select = (props: SelectProps) => {
-	const { options, placeholder, selected, onChange, onClose, title } = props;
+	const { options, placeholder, selected, onChange, onClose, title, type } =
+		props;
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -38,9 +40,12 @@ export const Select = (props: SelectProps) => {
 		onChange: setIsOpen,
 	});
 
-	const handleOptionClick = (option: OptionType) => {
+	const handleOptionClick = (
+		type: keyof ArticleStateType,
+		option: OptionType
+	) => {
 		setIsOpen(false);
-		onChange?.(option);
+		onChange?.(type, option);
 	};
 	const handlePlaceHolderClick: MouseEventHandler<HTMLDivElement> = () => {
 		setIsOpen((isOpen) => !isOpen);
@@ -93,7 +98,7 @@ export const Select = (props: SelectProps) => {
 								<Option
 									key={option.value}
 									option={option}
-									onClick={() => handleOptionClick(option)}
+									onClick={() => handleOptionClick(type, option)}
 								/>
 							))}
 					</ul>

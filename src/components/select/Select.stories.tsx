@@ -22,8 +22,9 @@ const SelectWithState = () => {
 	return (
 		<>
 			<Select
+				type='fontFamilyOption'
 				selected={selected}
-				onChange={setSelected}
+				onChange={() => setSelected}
 				options={options}
 				title='Название радиогруппы'
 			/>
