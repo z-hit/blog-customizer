@@ -27,7 +27,7 @@ export type ArticleParamsFormProps = {
 export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [isFormOpen, setFormOpen] = useState(false);
 	const [formState, setFormState] = useState(defaultArticleState);
-	const formRef = useRef<HTMLDivElement | null>(null);
+	const formRef = useRef<HTMLDivElement>(null);
 
 	function handleChange(type: keyof ArticleStateType, value: OptionType) {
 		setFormState((prev) => ({
