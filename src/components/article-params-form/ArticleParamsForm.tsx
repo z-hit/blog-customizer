@@ -77,42 +77,42 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Select
 						type='fontFamilyOption'
 						options={fontFamilyOptions}
-						placeholder={fontFamilyOptions[0].title}
+						placeholder={formState.fontFamilyOption}
 						title='шрифт'
-						selected={null}
+						selected={formState.fontFamilyOption}
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<RadioGroup
 						type='fontSizeOption'
 						name='fontSize'
 						options={fontSizeOptions}
-						selected={fontSizeOptions[0]}
+						selected={formState.fontSizeOption}
 						title='размер шрифта'
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Select
 						type='fontColor'
 						options={fontColors}
-						placeholder={fontColors[0].title}
+						placeholder={formState.fontColor}
 						title='цвет шрифта'
-						selected={null}
+						selected={formState.fontColor}
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Separator />
 					<Select
 						type='backgroundColor'
 						options={backgroundColors}
-						placeholder={backgroundColors[0].title}
+						placeholder={formState.backgroundColor}
 						title='цвет фона'
-						selected={null}
+						selected={formState.backgroundColor}
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Select
 						type='contentWidth'
 						options={contentWidthArr}
-						placeholder={contentWidthArr[0].title}
+						placeholder={formState.contentWidth}
 						title='ширина контента'
-						selected={null}
+						selected={formState.contentWidth}
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<div className={styles.bottomContainer}>

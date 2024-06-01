@@ -15,7 +15,7 @@ type SelectProps = {
 	selected: OptionType | null;
 	type: keyof ArticleStateType;
 	options: OptionType[];
-	placeholder?: string;
+	placeholder?: OptionType;
 	onChange?: (type: keyof ArticleStateType, selected: OptionType) => void;
 	onClose?: () => void;
 	title?: string;
@@ -87,7 +87,7 @@ export const Select = (props: SelectProps) => {
 								? selected?.className
 								: undefined
 						}>
-						{selected?.title || placeholder}
+						{selected?.title || placeholder?.title}
 					</Text>
 				</div>
 				{isOpen && (
