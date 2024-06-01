@@ -78,10 +78,12 @@ export const ArticleParamsForm = () => {
 						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<RadioGroup
+						type='fontSizeOption'
 						name='fontSize'
 						options={fontSizeOptions}
 						selected={fontSizeOptions[0]}
 						title='размер шрифта'
+						onChange={(type, selected) => handleChange(type, selected)}
 					/>
 					<Select
 						type='fontColor'
