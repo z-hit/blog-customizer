@@ -8,9 +8,11 @@ import { Text } from 'components/text';
 import styles from './ArticleParamsForm.module.scss';
 import { FormEvent, useRef, useState } from 'react';
 import {
+	ArticleStateType,
 	OptionType,
 	backgroundColors,
 	contentWidthArr,
+	defaultArticleState,
 	fontColors,
 	fontFamilyOptions,
 	fontSizeOptions,
@@ -18,13 +20,9 @@ import {
 import { RadioGroup } from '../radio-group';
 
 export const ArticleParamsForm = () => {
-	const [isFormOpen, setOpen] = useState(false);
-	//const [formState, setFormState] = useState(defaultArticleState);
+	const [isFormOpen, setFormOpen] = useState(false);
+	const [formState, setFormState] = useState(defaultArticleState);
 	const formRef = useRef<HTMLDivElement | null>(null);
-
-	function toggleOpen() {
-		setOpen(!isFormOpen);
-	}
 
 	/* function handleChange(value: OptionType) {
 		setFormState((prev) => ({
@@ -33,26 +31,31 @@ export const ArticleParamsForm = () => {
 		}))
 	} */
 
-	function handleSubmit(evt: FormEvent) {
+	/* function handleSubmit(evt: FormEvent) {
 		evt.preventDefault();
 		console.log('submit works');
-	}
+		console.log(formState);
+	} */
 
 	function handleReset(evt: FormEvent) {
 		evt.preventDefault();
-		//setFormState(defaultArticleState);
+		setFormState(defaultArticleState);
 		console.log('reset works');
+		console.log(formState);
 	}
 
 	useOutsideClickClose({
 		isOpen: isFormOpen,
 		rootRef: formRef,
-		onChange: setOpen,
+		onChange: setFormOpen,
 	});
 
 	return (
 		<div ref={formRef}>
-			<ArrowButton isOpen={isFormOpen} onClick={toggleOpen} />
+			<ArrowButton
+				isOpen={isFormOpen}
+				onClick={() => setFormOpen(!isFormOpen)}
+			/>
 			<aside
 				className={
 					!isFormOpen
@@ -61,7 +64,7 @@ export const ArticleParamsForm = () => {
 				}>
 				<form
 					onReset={handleReset}
-					onSubmit={handleSubmit}
+					//onSubmit={handleSubmit}
 					className={styles.form}>
 					<Text size={31} weight={800} uppercase>
 						{'Задайте параметры'}
