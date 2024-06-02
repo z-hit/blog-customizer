@@ -7,8 +7,6 @@ import {
 } from 'src/constants/articleProps';
 import styles from 'src/styles/index.module.scss';
 
-import clsx from 'clsx';
-
 export const App = () => {
 	const [params, setParams] = useState(defaultArticleState);
 	function handleChange(newParams: ArticleStateType) {
@@ -16,7 +14,7 @@ export const App = () => {
 	}
 	return (
 		<div
-			className={clsx(styles.main)}
+			className={styles.main}
 			style={
 				{
 					'--font-family': params.fontFamilyOption.value,
