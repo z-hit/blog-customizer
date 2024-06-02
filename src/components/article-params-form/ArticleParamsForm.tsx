@@ -60,10 +60,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 				onClick={() => setFormOpen(!isFormOpen)}
 			/>
 			<aside
-				className={clsx({
-					[styles.container]: true,
-					[styles.container_open]: isFormOpen,
-				})}>
+				className={clsx(styles.container, isFormOpen && styles.container_open)}>
 				<form
 					onReset={handleReset}
 					onSubmit={handleSubmit}

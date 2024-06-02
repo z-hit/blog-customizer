@@ -1,6 +1,7 @@
 import arrow from 'src/images/arrow.svg';
 
 import styles from './ArrowButton.module.scss';
+import clsx from 'clsx';
 
 /** Функция для обработки открытия/закрытия формы */
 export type OnClick = () => void;
@@ -15,17 +16,11 @@ export const ArrowButton = (props: ArrowButtonProps) => {
 			role='button'
 			aria-label='Открыть/Закрыть форму параметров статьи'
 			tabIndex={0}
-			className={
-				!props.isOpen
-					? styles.container
-					: `${styles.container} ${styles.container_open}`
-			}>
+			className={clsx(styles.container, props.isOpen && styles.container_open)}>
 			<img
 				src={arrow}
 				alt='иконка стрелочки'
-				className={
-					!props.isOpen ? styles.arrow : `${styles.arrow} ${styles.arrow_open}`
-				}
+				className={clsx(styles.arrow, props.isOpen && styles.arrow_open)}
 				onClick={props.onClick}
 			/>
 		</div>
