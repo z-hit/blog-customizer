@@ -27,7 +27,7 @@ export type ArticleParamsFormProps = {
 export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [isFormOpen, setFormOpen] = useState(false);
 	const [formState, setFormState] = useState(defaultArticleState);
-	const formRef = useRef<HTMLDivElement>(null);
+	const formRef = useRef<HTMLDivElement | null>(null);
 
 	function handleChange(type: keyof ArticleStateType, value: OptionType) {
 		setFormState((prev) => ({
@@ -74,7 +74,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						placeholder={formState.fontFamilyOption.title}
 						title='шрифт'
 						selected={formState.fontFamilyOption}
-						onChange={(type, selected) => handleChange(type, selected)}
+						onChange={(selected) => handleChange('fontFamilyOption', selected)}
 					/>
 					<RadioGroup
 						type='fontSizeOption'
@@ -82,7 +82,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						options={fontSizeOptions}
 						selected={formState.fontSizeOption}
 						title='размер шрифта'
-						onChange={(type, selected) => handleChange(type, selected)}
+						onChange={(selected) => handleChange('fontSizeOption', selected)}
 					/>
 					<Select
 						type='fontColor'
@@ -90,7 +90,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						placeholder={formState.fontColor.title}
 						title='цвет шрифта'
 						selected={formState.fontColor}
-						onChange={(type, selected) => handleChange(type, selected)}
+						onChange={(selected) => handleChange('fontColor', selected)}
 					/>
 					<Separator />
 					<Select
@@ -99,7 +99,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						placeholder={formState.backgroundColor.title}
 						title='цвет фона'
 						selected={formState.backgroundColor}
-						onChange={(type, selected) => handleChange(type, selected)}
+						onChange={(selected) => handleChange('backgroundColor', selected)}
 					/>
 					<Select
 						type='contentWidth'
@@ -107,7 +107,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						placeholder={formState.contentWidth.title}
 						title='ширина контента'
 						selected={formState.contentWidth}
-						onChange={(type, selected) => handleChange(type, selected)}
+						onChange={(selected) => handleChange('contentWidth', selected)}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />

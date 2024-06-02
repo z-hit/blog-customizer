@@ -9,15 +9,14 @@ type RadioGroupProps = {
 	name: string;
 	options: OptionType[];
 	selected: OptionType;
-	onChange?: (type: keyof ArticleStateType, selected: OptionType) => void;
+	onChange?: (selected: OptionType) => void;
 	title: string;
 };
 
 export const RadioGroup = (props: RadioGroupProps) => {
 	const { name, options, selected, onChange, title, type } = props;
 
-	const handleChange = (type: keyof ArticleStateType, option: OptionType) =>
-		onChange?.(type, option);
+	const handleChange = (option: OptionType) => onChange?.(option);
 
 	return (
 		<div className={styles.container}>
@@ -36,7 +35,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
 						value={option.value}
 						title={option.title}
 						selected={selected}
-						onChange={() => handleChange(type, option)}
+						onChange={handleChange}
 						option={option}
 					/>
 				))}
