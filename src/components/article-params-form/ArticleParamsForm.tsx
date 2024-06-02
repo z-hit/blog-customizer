@@ -24,7 +24,7 @@ export type ArticleParamsFormProps = {
 	onChange: (params: ArticleStateType) => void;
 };
 
-export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
+export const ArticleParamsForm = ({ onChange }: ArticleParamsFormProps) => {
 	const [isFormOpen, setFormOpen] = useState(false);
 	const [formState, setFormState] = useState(defaultArticleState);
 	const formRef = useRef<HTMLDivElement | null>(null);
@@ -38,12 +38,12 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 
 	function handleSubmit(evt: FormEvent) {
 		evt.preventDefault();
-		props.onChange(formState);
+		onChange(formState);
 	}
 
 	function handleReset(evt: FormEvent) {
 		evt.preventDefault();
-		props.onChange(defaultArticleState);
+		onChange(defaultArticleState);
 		setFormState(defaultArticleState);
 	}
 
