@@ -13,7 +13,6 @@ import styles from './Select.module.scss';
 
 type SelectProps = {
 	selected: OptionType | null;
-	type: keyof ArticleStateType;
 	options: OptionType[];
 	placeholder?: string;
 	onChange?: (selected: OptionType) => void;

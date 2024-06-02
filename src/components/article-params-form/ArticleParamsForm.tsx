@@ -69,7 +69,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						{'Задайте параметры'}
 					</Text>
 					<Select
-						type='fontFamilyOption'
 						options={fontFamilyOptions}
 						placeholder={formState.fontFamilyOption.title}
 						title='шрифт'
@@ -77,7 +76,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						onChange={(selected) => handleChange('fontFamilyOption', selected)}
 					/>
 					<RadioGroup
-						type='fontSizeOption'
 						name='fontSize'
 						options={fontSizeOptions}
 						selected={formState.fontSizeOption}
@@ -85,7 +83,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						onChange={(selected) => handleChange('fontSizeOption', selected)}
 					/>
 					<Select
-						type='fontColor'
 						options={fontColors}
 						placeholder={formState.fontColor.title}
 						title='цвет шрифта'
@@ -94,7 +91,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					/>
 					<Separator />
 					<Select
-						type='backgroundColor'
 						options={backgroundColors}
 						placeholder={formState.backgroundColor.title}
 						title='цвет фона'
@@ -102,7 +98,6 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 						onChange={(selected) => handleChange('backgroundColor', selected)}
 					/>
 					<Select
-						type='contentWidth'
 						options={contentWidthArr}
 						placeholder={formState.contentWidth.title}
 						title='ширина контента'

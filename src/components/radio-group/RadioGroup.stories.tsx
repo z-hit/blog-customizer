@@ -22,7 +22,6 @@ const RadioGroupWithState = () => {
 	return (
 		<>
 			<RadioGroup
-				type='fontSizeOption'
 				selected={selected}
 				name='radio'
 				onChange={() => setSelected}
