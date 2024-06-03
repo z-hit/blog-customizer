@@ -23,7 +23,7 @@ const SelectWithState = () => {
 		<>
 			<Select
 				selected={selected}
-				onChange={setSelected}
+				onChange={() => setSelected}
 				options={options}
 				title='Название радиогруппы'
 			/>

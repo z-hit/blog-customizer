@@ -8,7 +8,7 @@ type RadioGroupProps = {
 	name: string;
 	options: OptionType[];
 	selected: OptionType;
-	onChange?: (value: OptionType) => void;
+	onChange?: (selected: OptionType) => void;
 	title: string;
 };
 
@@ -34,7 +34,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
 						value={option.value}
 						title={option.title}
 						selected={selected}
-						onChange={() => handleChange(option)}
+						onChange={handleChange}
 						option={option}
 					/>
 				))}

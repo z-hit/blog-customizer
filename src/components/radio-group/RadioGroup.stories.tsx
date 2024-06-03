@@ -24,7 +24,7 @@ const RadioGroupWithState = () => {
 			<RadioGroup
 				selected={selected}
 				name='radio'
-				onChange={setSelected}
+				onChange={() => setSelected}
 				options={options}
 				title='Название радиогруппы'
 			/>
